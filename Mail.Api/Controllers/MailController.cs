@@ -24,6 +24,7 @@ namespace Mail.Api.Controllers
         }
 
         [HttpGet]
+        [Route("get")]
         public async Task<IActionResult> GetMail([FromBody] MailGetModel mailGet, CancellationToken cancellationToken)
         {
             var mailbox = new Mailbox
@@ -60,6 +61,7 @@ namespace Mail.Api.Controllers
         }
 
         [HttpPost]
+        [Route("send")]
         public async Task<IActionResult> SendMail([FromBody] MailSendModel mailSend, CancellationToken cancellationToken)
         {
             await _mailService.SendMailAsyc(mailSend, cancellationToken);
