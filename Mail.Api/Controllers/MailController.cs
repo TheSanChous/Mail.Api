@@ -23,7 +23,7 @@ namespace Mail.Api.Controllers
             _mailService = mailService;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("get")]
         public async Task<IActionResult> GetMail([FromBody] MailGetModel mailGet, CancellationToken cancellationToken)
         {
