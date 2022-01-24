@@ -48,11 +48,12 @@ namespace Mail.Api.Controllers
             var response = mail.ToList()
                 .Select(email => new
                 {
+                    Message_id = email.MessageId,
                     From = email.From.Select(i => i.Name),
                     Subject = email.Subject,
-                    Body = email.TextBody,
-                    Attachments = email.Attachments.Count(),
-                    Date = email.Date
+                    Content = email.HtmlBody,
+                    Attachments_Count = email.Attachments.Count(),
+                    Date = email.Date.ToUniversalTime()
                 });
 
             return Ok(response);
