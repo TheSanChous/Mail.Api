@@ -94,7 +94,7 @@ namespace Mail.Api.Core.Mail
                 cancellationToken);
 
             await smtpClient.AuthenticateAsync(mailbox.Login, mailbox.Password, cancellationToken);
-
+            
             var to = mailSend.message.To
                 .Select(item => InternetAddress.Parse(item));
 

@@ -64,7 +64,13 @@ namespace Mail.Api.Controllers
         [Route("send")]
         public async Task<IActionResult> SendMail([FromBody] MailSendModel mailSend, CancellationToken cancellationToken)
         {
-            await _mailService.SendMailAsyc(mailSend, cancellationToken);
+            try {
+                await _mailService.SendMailAsyc(mailSend, cancellationToken);
+            }
+            catch(Exception ex) {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
 
             return Ok();
         }
